@@ -1,3 +1,7 @@
-export default function TestPage() {
-    return <h1>Test!!!</h1>;
-  }
+import { Image } from "semantic-ui-react";
+
+const ImageExampleBordered = () => (
+  <Image src="jdun.jpg" size="huge" centered />
+);
+
+export default ImageExampleBordered;
