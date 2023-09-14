@@ -5,6 +5,7 @@ const pages = [
   { href: "/", title: "Home" },
   { href: "/about", title: "About" },
   { href: "/info", title: "Info" },
+  { href: "/test", title: "Test" },
 ];
 
 export default function Header() {
