@@ -9,10 +9,15 @@ function Calendar() {
       const [month, year] = date.split("-").map(Number);
       const daysInMonth = new Date(year, month, 0).getDate();
       console.log("дней в месяце:" + daysInMonth);
-      const firstDayOfWeek = new Date(year, month - 1, 1).getDay();
+      let firstDayOfWeek = new Date(year, month - 1, 1).getDay();
       console.log("первый день месяца:" + firstDayOfWeek);
       const calendarData = [];
 
+      if (firstDayOfWeek === 0) {
+        firstDayOfWeek = 7;
+      }
+
+      console.log("сейчас" + firstDayOfWeek);
       let day = 1;
       for (let i = 0; i < 6; i++) {
         const week = [];
