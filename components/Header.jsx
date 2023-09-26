@@ -6,6 +6,8 @@ const pages = [
   { href: "/about", title: "About" },
   { href: "/info", title: "Info" },
   { href: "/test", title: "Test" },
+  { href: "/table", title: "Table" },
+  { href: "/calendar", title: "Calendar" },
 ];
 
 export default function Header() {
