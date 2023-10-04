@@ -1,10 +1,23 @@
+import { Image, Card } from "semantic-ui-react";
+
 const MovieList = ({ movies }) => {
   return (
-    <ul>
+    <Card.Group>
       {movies.map((movie) => (
-        <li key={movie.imdbID}>{movie.Title}</li>
+        <Card>
+          <Card.Content>
+            <Card.Header>{movie.Title}</Card.Header>
+            <Card.Description>{movie.Year}</Card.Description>
+            {movie.Poster !== "N/A" ? (
+              <Image src={movie.Poster} size="medium" />
+            ) : (
+              <Image src="jdun.jpg" size="medium" />
+            )}
+            <Card.Meta>{movie.Type}</Card.Meta>
+          </Card.Content>
+        </Card>
       ))}
-    </ul>
+    </Card.Group>
   );
 };
 

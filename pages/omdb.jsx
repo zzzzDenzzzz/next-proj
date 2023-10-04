@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Search from "../components/Search";
+import SearchForm from "../components/SearchForm";
 import MovieList from "../components/MovieList";
 
-const HomePage = () => {
+const OmDB = () => {
   const [movies, setMovies] = useState([]);
 
   const handleSearch = (movies) => {
@@ -11,11 +11,11 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1>Movie Search</h1>
-      <Search onSearch={handleSearch} />
+      <h3>Search Movie</h3>
+      <SearchForm onSearch={handleSearch} />
       <MovieList movies={movies} />
     </div>
   );
 };
 
-export default HomePage;
+export default OmDB;

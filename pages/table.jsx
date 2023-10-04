@@ -1,6 +1,7 @@
 import { useEffect, useState, useReducer } from "react";
 import { Table, Loader, Dimmer, Button } from "semantic-ui-react";
 import _ from "lodash";
+import DataLoader from "../components/DataLoader";
 
 export default function Index() {
   const [users, setUsers] = useState([]),
@@ -69,21 +70,14 @@ export default function Index() {
     dispatch({ type: "SET_DATA", data: users });
   }, [users]);
 
-  if (error)
-    return (
-      <Dimmer active inverted>
-        <Loader active inline size="huge">
-          Loading...
-        </Loader>
-      </Dimmer>
-    );
+  if (error) return <DataLoader />;
 
   return (
     <Table sortable celled fixed>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell
-          textAlign="center"
+            textAlign="center"
             rowSpan="2"
             sorted={column === "name" ? direction : null}
             onClick={() => dispatch({ type: "CHANGE_SORT", column: "name" })}
@@ -91,7 +85,7 @@ export default function Index() {
             Name
           </Table.HeaderCell>
           <Table.HeaderCell
-          textAlign="center"
+            textAlign="center"
             rowSpan="2"
             sorted={column === "username" ? direction : null}
             onClick={() =>
@@ -101,27 +95,35 @@ export default function Index() {
             UserName
           </Table.HeaderCell>
           <Table.HeaderCell
-          textAlign="center"
+            textAlign="center"
             rowSpan="2"
             sorted={column === "email" ? direction : null}
             onClick={() => dispatch({ type: "CHANGE_SORT", column: "email" })}
           >
             Email
           </Table.HeaderCell>
-          <Table.HeaderCell colSpan="3" textAlign="center">Address</Table.HeaderCell>
+          <Table.HeaderCell colSpan="3" textAlign="center">
+            Address
+          </Table.HeaderCell>
 
-          <Table.HeaderCell rowSpan="2" textAlign="center">Phone</Table.HeaderCell>
+          <Table.HeaderCell rowSpan="2" textAlign="center">
+            Phone
+          </Table.HeaderCell>
           <Table.HeaderCell
-          textAlign="center"
+            textAlign="center"
             rowSpan="2"
             sorted={column === "website" ? direction : null}
             onClick={() => dispatch({ type: "CHANGE_SORT", column: "website" })}
           >
             Website
           </Table.HeaderCell>
-          <Table.HeaderCell colSpan="3" textAlign="center">Company</Table.HeaderCell>
+          <Table.HeaderCell colSpan="3" textAlign="center">
+            Company
+          </Table.HeaderCell>
 
-          <Table.HeaderCell rowSpan="2" textAlign="center">Actions</Table.HeaderCell>
+          <Table.HeaderCell rowSpan="2" textAlign="center">
+            Actions
+          </Table.HeaderCell>
         </Table.Row>
         <Table.Row>
           <Table.HeaderCell textAlign="center">Street</Table.HeaderCell>
@@ -137,17 +139,39 @@ export default function Index() {
       <Table.Body>
         {data.map((user) => (
           <Table.Row key={user.id}>
-            <Table.Cell selectable textAlign="center">{user.name}</Table.Cell>
-            <Table.Cell selectable textAlign="center">{user.username}</Table.Cell>
-            <Table.Cell selectable textAlign="center">{user.email}</Table.Cell>
-            <Table.Cell selectable textAlign="center">{user.address.street}</Table.Cell>
-            <Table.Cell selectable textAlign="center">{user.address.suite}</Table.Cell>
-            <Table.Cell selectable textAlign="center">{user.address.city}</Table.Cell>
-            <Table.Cell selectable textAlign="center">{user.phone}</Table.Cell>
-            <Table.Cell selectable textAlign="center">{user.website}</Table.Cell>
-            <Table.Cell selectable textAlign="center">{user.company.name}</Table.Cell>
-            <Table.Cell selectable textAlign="center">{user.company.catchPhrase}</Table.Cell>
-            <Table.Cell selectable textAlign="center">{user.company.bs}</Table.Cell>
+            <Table.Cell selectable textAlign="center">
+              {user.name}
+            </Table.Cell>
+            <Table.Cell selectable textAlign="center">
+              {user.username}
+            </Table.Cell>
+            <Table.Cell selectable textAlign="center">
+              {user.email}
+            </Table.Cell>
+            <Table.Cell selectable textAlign="center">
+              {user.address.street}
+            </Table.Cell>
+            <Table.Cell selectable textAlign="center">
+              {user.address.suite}
+            </Table.Cell>
+            <Table.Cell selectable textAlign="center">
+              {user.address.city}
+            </Table.Cell>
+            <Table.Cell selectable textAlign="center">
+              {user.phone}
+            </Table.Cell>
+            <Table.Cell selectable textAlign="center">
+              {user.website}
+            </Table.Cell>
+            <Table.Cell selectable textAlign="center">
+              {user.company.name}
+            </Table.Cell>
+            <Table.Cell selectable textAlign="center">
+              {user.company.catchPhrase}
+            </Table.Cell>
+            <Table.Cell selectable textAlign="center">
+              {user.company.bs}
+            </Table.Cell>
             <Table.Cell>
               <Button.Group vertical>
                 <Button onClick={() => handleDeleteUser(user.id)} color="red">
