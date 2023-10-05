@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Form } from "semantic-ui-react";
 import DataLoader from "./DataLoader";
+import { API_KEY } from "../consts/api-key";
 
 const SearchForm = ({ onSearch }) => {
   const [query, setQuery] = useState("");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const API_KEY = "9182ad18";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
